@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 
 
-
 export default function Navbar(props) {
   const inputRef = useRef(null);
 

@@ -30,7 +30,7 @@ export default function SessionPanel({hasResponse, asking, response, fileName}) 
       <div className='relative w-full grid justify-center'>
 
         {/* Sidebar */}
-        <div className='absolute flex flex-col'>
+        {/* <div className='absolute flex flex-col'>
 
          
 
@@ -41,7 +41,7 @@ export default function SessionPanel({hasResponse, asking, response, fileName}) 
           </div>
 
           
-        </div>
+        </div> */}
 
         {/* Demo */}
 
@@ -52,7 +52,7 @@ export default function SessionPanel({hasResponse, asking, response, fileName}) 
           : ""
         }
 
-        <div className="relative w-[834px] session-panel text-gray-100 text-base my-4">
+        <div className="relative md:w-[400px] w-[300px] session-panel text-gray-100 text-base my-4">
           
           <div className="grid w-full text-base gap-y-6 p-4 ">
 

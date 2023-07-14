@@ -49,7 +49,7 @@
 
 /* Command Input */
 .cmd-input {
-  background-color: #111214;
+  background-color: #ffffff;
   padding: 15px 24px;
   border-radius: 12px;
   border-width: 0.8px;
@@ -159,11 +159,11 @@
 .session-panel {
   border-width: 0.7px;
   border-color: #353A3E;
-  background: radial-gradient(circle at center, #0C0E12 81%, #1B1E22 100%);
+  background: radial-gradient(circle at center, #ffffff 81%, #ffffff 100%);
   border-radius: 16px;
 }
 .hr-bg {
-  color: #282A31;
+  color: #000000;
   background-color: #282A31;
 }
 .figma-bg {
@@ -280,4 +280,9 @@
   background: #292B2E;
   border-radius: 12px;
   color: white; 
+}
+body {
+  background-image: url("./assets/body.png");
+   background-size: cover; 
+   overflow: hidden;
 }
