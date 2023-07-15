@@ -55,7 +55,7 @@
   border-width: 0.8px;
   border-color: #586777;
   color : #9A9A9A;
-  box-shadow: 0px 4px 110px rgb(49, 55, 61, 0.8), 0px 2px 5px rgba(0, 0, 0, 0.03), 0px 1px 1px rgba(0, 0, 0, 0.25), inset 0px 4px 5px rgba(43, 45, 53, 0.1);
+  /* box-shadow: 0px 4px 110px rgb(49, 55, 61, 0.8), 0px 2px 5px rgba(0, 0, 0, 0.03), 0px 1px 1px rgba(0, 0, 0, 0.25), inset 0px 4px 5px rgba(43, 45, 53, 0.1); */
   /* box-shadow: 0px 00px 40px 40px rgba(38, 38, 44, 0.05); */
   /* box-shadow: 0px 0px 20px 50px rgba(0, 0, 0, 0.03); */
   /* box-shadow: 0px 0px 40px 50px rgba(43, 45, 53, 0.1); */

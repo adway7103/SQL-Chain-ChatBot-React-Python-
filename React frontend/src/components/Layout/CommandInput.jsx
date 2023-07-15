@@ -24,10 +24,10 @@ export default function CommandInput({ onCommandSubmit, messages }) {
       />
       {command.length === 0 ? (
         <div className="flex justify-center align-center py-2 px-5 bg-blue-500 rounded-full text-white">
-          <div className="flex justify-center align-center">Submit</div>
+          <div className="flex justify-center align-center pt-2">Submit</div>
         </div>
       ) : (
-        <button type="submit" disabled={disableInput} className="py-2 px-5 bg-blue-500 rounded-full text-white" disabled={disableInput}>
+        <button type="submit" disabled={disableInput} className="py-2 px-5 bg-blue-500 rounded-full text-white pt-2" disabled={disableInput}>
           Submit
         </button>
       )}
