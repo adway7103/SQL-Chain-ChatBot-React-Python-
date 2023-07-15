@@ -8,8 +8,9 @@ import myImage from './bot.jpg'
 import myImage1 from './userAvatar.jpg'
 import myImage2 from './botAvatar.png'
 export default function Chat() {
-
+  const [disableInput, setDisableInput] = useState(false);
   const [messages,setMessages]= useState([]);
+  const [res,setRes]=useState([]);
   const [response, setResponse] = useState("");
   const [uploading, setUploading] = useState(false);
   const [asking, setAsking] = useState(false);
@@ -25,6 +26,8 @@ export default function Chat() {
 
 
   const handleCommandSubmit = async (command) => {
+    setMessages([...messages,command,""]);
+    setDisableInput(true);
     const apiUrl = "http://127.0.0.1:5000/first";
     const requestOptions = {
       method: "POST",
@@ -32,17 +35,20 @@ export default function Chat() {
       body: JSON.stringify({ prompt: command }),
     };
     onAskingTrue();
-
+    
     const response = await fetch(apiUrl, requestOptions);
-
     const data = await response.json();
-    setMessages(...messages,data.response)
+    setRes((prevRes) => [...prevRes, data.response,""]);
     setResponse(data.response);
+    console.log(data.response)
+    setDisableInput(false);
     setHasResponse(true);
     onAskingFalse();
   };
-  
-console.log(messages);
+
+
+  console.log(messages);
+  console.log(res);
   const toggleChatPanel = () => {
     setShowChatPanel(!showChatPanel);
   };
@@ -53,15 +59,15 @@ console.log(messages);
       <div className="md:ml-[73vw] mt-[21vh] relative w-full h-full">
       { uploading ? <Spinner /> : ""
       }   
-      <div className="bottom-0 right-0 max-h-[650px] md:w-[480px] bg-white grid content-between" style={{ minHeight: "calc(80vh - 72px)" }}>
-      <div className="h-[80px] w-full flex justify-center align-center text-white bg-blue-600 align-center"><div className="align-center text-[45px]">Sara</div></div>
+      <div className="border-[1px] border-black bottom-0 right-0 max-h-[650px] md:w-[480px] bg-white grid content-between" style={{ minHeight: "calc(80vh - 72px)" }}>
+      <div className="border-2 h-[80px] w-full flex justify-center align-center text-white bg-blue-600 align-center"><div className="align-center text-[45px]">Sara</div></div>
         
         <div className="overflow-scroll overflow-x-hidden max-h-[600px] h-[470px]">{messages.map((data,key)=>
-        key%2===0?<div className="flex mt-2 justify-end gap-2"><span className="break-words bg-blue-500 px-3 py-3 max-w-[350px] rounded-3xl text-white">{data}</span><img className=" h-12 w-12 rounded-full" src={myImage1} alt="" /></div>:<div className="mt-2 gap-2 flex justify-start"><img className="h-12 w-12 rounded-full" src={myImage} alt="" /><span className="max-w-[350px] break-words bg-gray-200 px-3 py-3 rounded-3xl">{data}</span></div>
+        key%2===0?<div className="flex mt-2 justify-end mr-2 gap-2"><span className="break-words bg-blue-500 px-3 py-3 max-w-[350px] rounded-3xl text-white">{data}</span><img className=" h-12 w-12 rounded-full" src={myImage1} alt="" /></div>:<div className="ml-2 mt-2 gap-2 flex justify-start"><img className="h-12 w-12 rounded-full" src={myImage} alt="" /><span className="max-w-[350px] break-words bg-gray-200 px-3 py-3 rounded-3xl">{res[key-1]}</span></div>
         )};</div>
         <div className="relative w-full justify-between">
           <div className="w-full justify-between grid pb-4" style={{ placeContent: "center" }}>
-            <CommandInput onCommandSubmit={handleCommandSubmit} setMessages={setMessages} messages={messages} />
+            <CommandInput onCommandSubmit={handleCommandSubmit} messages={messages}/>
           </div>
         </div>
       </div>
