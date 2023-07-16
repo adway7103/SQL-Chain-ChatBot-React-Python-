@@ -9,11 +9,11 @@ export default function CommandInput({ onCommandSubmit, messages }) {
     setCommand("");
     setDisableInput(true); // Disable input while waiting for response
     await onCommandSubmit(command);
-    setDisableInput(false); // Enable input after response is received
+    setDisableInput(false); // Enable input after respose
   };
-
+  
   return (
-    <form onSubmit={handleSubmit} className="flex gap-6 w-[100%]">
+    <form className="flex gap-6 w-[100%]">
       <input
         className="cmd-input text-base text-ellipsis px-18 w-[350px] overflow-hidden"
         type="text"
@@ -23,11 +23,11 @@ export default function CommandInput({ onCommandSubmit, messages }) {
          // Disable input based on the disableInput state
       />
       {command.length === 0 ? (
-        <div className="flex justify-center align-center py-2 px-5 bg-blue-500 rounded-full text-white">
-          <div className="flex justify-center align-center pt-2">Submit</div>
-        </div>
+        <button type="submit" className="py-2 px-5 bg-blue-600 rounded-full text-white pt-2" disabled={disableInput}>
+        Submit
+      </button>
       ) : (
-        <button type="submit" disabled={disableInput} className="py-2 px-5 bg-blue-500 rounded-full text-white pt-2" disabled={disableInput}>
+        <button type="submit" onClick={handleSubmit} className="py-2 px-5 bg-blue-500 rounded-full text-white pt-2" disabled={disableInput}>
           Submit
         </button>
       )}
